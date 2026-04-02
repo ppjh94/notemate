@@ -1,65 +1,65 @@
-CREATE TABLE users (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    role VARCHAR(20) NOT NULL,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL
+create table user (
+	user_id bigint auto_increment primary key,
+	email varchar(100) not null unique,
+	password varchar(255) not null,
+	name varchar(50) not null,
+	roll varchar(20) not null,
+	created_at datetime not null,
+	updated_at datetime not null
 );
 
-CREATE TABLE contents (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(200) NOT NULL,
-    body TEXT NOT NULL,
-    is_premium BOOLEAN NOT NULL,
-    author_id BIGINT NOT NULL,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    CONSTRAINT fk_contents_author
-        FOREIGN KEY (author_id) REFERENCES users(id)
+create table contents (
+	content_id bigint auto_increment primary key,
+	user_id bigint not null,
+	tilte varchar(200) not null,
+	body text not null,
+	is_premium boolean not null,
+	created_at datetime not null,
+	updated_at datetime not null,
+	constraint fk_contents_author 
+		foreign key (user_id) references user(user_id)
 );
 
-CREATE TABLE subscription_plans (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    price INT NOT NULL,
-    duration_days INT NOT NULL,
-    description VARCHAR(255),
-    is_active BOOLEAN NOT NULL,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL
+create table subscriptionPlan (
+	subPlan_id bigint auto_increment primary key,
+	plan_name varchar(50) not null,
+	price int not null,
+	duration_days int not null,
+	description varchar(255),
+	is_active boolean not null,
+	created_at datetime not null,
+	updated_at datetime not null
 );
 
-CREATE TABLE subscriptions (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    plan_id BIGINT NOT NULL,
-    status VARCHAR(20) NOT NULL,
-    start_at DATETIME,
-    end_at DATETIME,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    CONSTRAINT fk_subscriptions_user
-        FOREIGN KEY (user_id) REFERENCES users(id),
-    CONSTRAINT fk_subscriptions_plan
-        FOREIGN KEY (plan_id) REFERENCES subscription_plans(id)
+create table subscription (
+	subStatus_id bigint auto_increment primary key,
+	user_id bigint not null,
+	subPlan_id bigint not null,
+	status varchar(20) not null,
+	start_at text not null,
+	end_at boolean not null,
+	created_at datetime not null,
+	updated_at datetime not null,
+	constraint fk_subscription_user
+		foreign key (user_id) references user(user_id),
+	constraint fk_subscription_plan
+		foreign key (subPlan_id) references subscriptionPlan(subPlan_id)
 );
 
-CREATE TABLE payments (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    subscription_id BIGINT,
-    order_id VARCHAR(100) NOT NULL UNIQUE,
-    payment_key VARCHAR(200),
-    amount INT NOT NULL,
-    status VARCHAR(20) NOT NULL,
-    requested_at DATETIME,
-    approved_at DATETIME,
-    created_at DATETIME NOT NULL,
-    updated_at DATETIME NOT NULL,
-    CONSTRAINT fk_payments_user
-        FOREIGN KEY (user_id) REFERENCES users(id),
-    CONSTRAINT fk_payments_subscription
-        FOREIGN KEY (subscription_id) REFERENCES subscriptions(id)
+create table payment (
+	payment_id bigint not null,
+	user_id bigint not null,
+	subStatus_id bigint not null,
+	order_id varchar(100) not null unique,
+	payment_key text not null,
+	amount boolean not null,
+	status varchar(20) not null,
+	requested_at datetime,
+	approved_at datetime,
+	created_at datetime not null,
+	updated_at datetime not null,
+	constraint fk_payment_user
+		foreign key (user_id) references user(user_id),
+	constraint fk_payment_plan
+		foreign key (subStatus_id) references subscription(subStatus_id)
 );
