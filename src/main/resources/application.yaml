@@ -2,10 +2,12 @@ spring:
   application: 
     name: notemate
 
+  # include할 파일 명시
+  config:
+    import: optional:application-secret.yaml
+
   datasource:
     url: jdbc:mysql://localhost:3306/notemate?serverTimezone=Asia/Seoul&characterEncoding=UTF8
-    username: root
-    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # JPA 설정
