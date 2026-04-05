@@ -21,7 +21,7 @@ create table contents (
 );
 
 create table subscriptionPlan (
-	subPlan_id bigint auto_increment primary key,
+	plan_id bigint auto_increment primary key,
 	plan_name varchar(50) not null,
 	price int not null,
 	duration_days int not null,
@@ -32,27 +32,27 @@ create table subscriptionPlan (
 );
 
 create table subscription (
-	subStatus_id bigint auto_increment primary key,
+	status_id bigint auto_increment primary key,
 	user_id bigint not null,
-	subPlan_id bigint not null,
+	plan_id bigint not null,
 	status varchar(20) not null,
-	start_at text not null,
-	end_at boolean not null,
+	start_at datetime,
+	end_at datetime,
 	created_at datetime not null,
 	updated_at datetime not null,
 	constraint fk_subscription_user
 		foreign key (user_id) references user(user_id),
 	constraint fk_subscription_plan
-		foreign key (subPlan_id) references subscriptionPlan(subPlan_id)
+		foreign key (plan_id) references subscriptionPlan(plan_id)
 );
 
 create table payment (
 	payment_id bigint not null,
 	user_id bigint not null,
-	subStatus_id bigint not null,
+	status_id bigint not null,
 	order_id varchar(100) not null unique,
-	payment_key text not null,
-	amount boolean not null,
+	payment_key varchar(200) not null,
+	amount int not null,
 	status varchar(20) not null,
 	requested_at datetime,
 	approved_at datetime,
@@ -61,5 +61,5 @@ create table payment (
 	constraint fk_payment_user
 		foreign key (user_id) references user(user_id),
 	constraint fk_payment_plan
-		foreign key (subStatus_id) references subscription(subStatus_id)
+		foreign key (status_id) references subscription(status_id)
 );
