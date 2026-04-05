@@ -14,3 +14,12 @@
 ## 2026-04-02
  - MySQL 재설치 및 DBeaver 연결 테스트 성공
  - DDL 정의 및 테이블 생성 완료
+ 
+## 2026-04-03
+ - application-secret.yaml 분리하여 gitignore 등록
+ - JPA Entity 클래스에 대한 패키지 구조 설계
+ - BaseTimeEntity 생성
+ 
+## 2026-04-05
+ - 전체 테이블에 대한 Entity 작업 완료
+ 
