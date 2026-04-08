@@ -21,5 +21,17 @@
  - BaseTimeEntity 생성
  
 ## 2026-04-05
- - 전체 테이블에 대한 Entity 작업 완료
+ - 전체 테이블에 대한 Entity 작성 완료
+ 
+## 2026-04-06
+ - JpaAuditingConfig 추가 
+ JpaAuditingConfig의 역할: BaseTimeEntity의 @CreatedDate, @LastModifiedDate에 감사(Auditing) 기능을 켜서 생성/수정 시작을 자동 관리하는 역할 (공통 시간 관리를 위해 코드를 줄여주고 실수를 막을 수 있음)
+ - User, Content에 대한 Repository 작성
+
+## 2026-04-07
+ - DB 테이블 Entity에 대한 Repository 작성 완료
+ Entity를 DB에서 조회/저장할 수 있게하는 역할
+
+## 2026-04-09
+
  
