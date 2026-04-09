@@ -23,6 +23,8 @@ public class UserService {
 	
 	@Transactional
 	public Long signup(SignupRequest request) {
+		
+		/* 이메일 중복 검사 메서드 선 호출 */
 		validateDuplicateEmail(request.email());
 		
 		User user = User.builder()
@@ -35,6 +37,7 @@ public class UserService {
 		return userRepository.save(user).getUserId();
 	}
 
+	/* 이메일 중복 검사 메서드 */
 	private void validateDuplicateEmail(String email) {
 		if (userRepository.existsByEmail(email)) {
 			throw new IllegalArgumentException("이미 사용 중인 이메일입니다.");

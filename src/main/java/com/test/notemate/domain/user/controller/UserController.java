@@ -37,6 +37,7 @@ public class UserController {
 			bindingResult.rejectValue("email", "duplicate", e.getMessage());
 		}
 		
+		/* POST 요청 처리 후 바로 뷰를 반환하면 새로고침 시 같은 POST가 다시 전송될 수 있으므로, redirect GET 요청으로 바꿔 중복 제출을 방지 */
 		return "redirect:/login";
 	}
 
