@@ -7,12 +7,12 @@ import com.test.notemate.domain.content.entity.Content;
 public interface ContentRepository extends JpaRepository<Content, Long> {
 
 	/* 전체 콘텐츠 조회 */
-	List<Content> findAllByOrderByIdDesc();
+	List<Content> findAllByOrderByContentIdDesc();
 	
 	/* 무료 콘텐츠만 조회 */
-	List<Content> fintByPremiumFalseOrderByIdDesc();
+	List<Content> findByPremiumFalseOrderByContentIdDesc();
 	
 	/* 프리미엄 콘텐츠만 조회 */
-	List<Content> findByPremiumTrueOrderByIdDesc();
+	List<Content> findByPremiumTrueOrderByContentIdDesc();
 	
 }
