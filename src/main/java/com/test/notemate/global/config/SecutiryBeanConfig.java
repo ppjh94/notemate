@@ -20,7 +20,7 @@ public class SecutiryBeanConfig {
 			.csrf(AbstractHttpConfigurer::disable)
 			.formLogin(AbstractHttpConfigurer::disable)
 			.httpBasic(AbstractHttpConfigurer::disable)
-			.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+			.authorizeHttpRequests(auth -> auth.anyRequest().permitAll()); //모든 경로 허용
 
 		return http.build();
 	}
