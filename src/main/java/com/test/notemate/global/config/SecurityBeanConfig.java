@@ -11,20 +11,19 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
 @Configuration
-public class SecutiryBeanConfig {
+public class SecurityBeanConfig {
 
 	/*Srping Security 설정 임시 비활성화*/
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-			.csrf(AbstractHttpConfigurer::disable)
-			.formLogin(AbstractHttpConfigurer::disable)
-			.httpBasic(AbstractHttpConfigurer::disable)
-			.authorizeHttpRequests(auth -> auth.anyRequest().permitAll()); //모든 경로 허용
-
-		return http.build();
-	}
-
+	/*
+	 * @Bean public SecurityFilterChain securityFilterChain(HttpSecurity http)
+	 * throws Exception { http .csrf(AbstractHttpConfigurer::disable)
+	 * .formLogin(AbstractHttpConfigurer::disable)
+	 * .httpBasic(AbstractHttpConfigurer::disable) .authorizeHttpRequests(auth ->
+	 * auth.anyRequest().permitAll()); //모든 경로 허용
+	 * 
+	 * return http.build(); }
+	 */
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
