@@ -26,6 +26,8 @@ public class SecurityConfig {
                                 "/",
                                 "/signup",
                                 "/login",
+                                "/contents",
+                                "/contents/**",
                                 "/api/users",
                                 "/css/**",
                                 "/js/**",
