@@ -5,11 +5,26 @@
     <title>Notemate</title>
 </head>
 <body>
-<h1>Notemate 홈</h1>
-<p>로그인에 성공했습니다.</p>
+<h1>Notemate</h1>
 
-<form th:action="@{/logout}" method="post">
-    <button type="submit">로그아웃</button>
-</form>
+<div th:if="${email != null}">
+    <p>
+        로그인 사용자:
+        <strong th:text="${email}">user@example.com</strong>
+    </p>
+    <p>
+        권한:
+        <strong th:text="${role}">USER</strong>
+    </p>
+    
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">로그아웃</button>
+    </form>
+</div>
+
+<div th:if="${email == null}">
+    <a th:href="@{/login}">로그인</a>
+    <a th:href="@{/signup}">회원가입</a>
+</div>
 </body>
 </html>

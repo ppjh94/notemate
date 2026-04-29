@@ -3,7 +3,7 @@ create table user (
 	email varchar(100) not null unique,
 	password varchar(255) not null,
 	name varchar(50) not null,
-	roll varchar(20) not null,
+	roll varchar(20) not null default 'USER',
 	created_at datetime not null,
 	updated_at datetime not null
 );
@@ -63,3 +63,4 @@ create table payment (
 	constraint fk_payment_plan
 		foreign key (status_id) references subscription(status_id)
 );
+
