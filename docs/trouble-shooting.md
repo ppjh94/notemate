@@ -1,6 +1,6 @@
 # 트러블 슈팅
 
-## 문제
+## 문제1
 - DBeaver에서 MySQL DB 연결 불가 'Public Key Retrieval is not allowed 에러' 발생
 
 ## 원인
@@ -11,7 +11,7 @@ DBeaver에서 연결하고자 하는 DB 우클릭 > Edit Connection
  > Drvier properties > 'allowPublicKeyRetrieval' 값 false → true로 변경
 
 
-## 문제
+## 문제2
 - DaoAuthenticationProvider() 기본 생성자 사용 불가
 
 ## 원인

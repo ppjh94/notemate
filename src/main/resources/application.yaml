@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application: 
     name: notemate
@@ -13,7 +16,7 @@ spring:
   # JPA 설정
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true #콘솔로그에 SQL 출력(log4jdbc와 비슷한 기능)
     properties:
       hibernate:
