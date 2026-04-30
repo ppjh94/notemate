@@ -10,6 +10,12 @@ import com.test.notemate.global.auth.CustomUserDetails;
 @Controller
 public class HomeController {
 
+	/**
+	 * 로그인한 User의 이메일과 권한 값을 검증 후 페이지를 반환
+	 * @param userDetails
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/")
 	public String home(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
 		

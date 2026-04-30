@@ -21,6 +21,10 @@ public class CustomUserDetails implements UserDetails {
 	private final String password;
 	private final UserRole role;
 	
+	/**
+	 * Security가 사용할 로그인 사용자 정보 객체
+	 * @param user
+	 */
 	public CustomUserDetails(User user) {
 		this.id = user.getUserId();
 		this.email = user.getEmail();
