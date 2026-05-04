@@ -11,7 +11,7 @@ create table user (
 create table contents (
 	content_id bigint auto_increment primary key,
 	user_id bigint not null,
-	tilte varchar(200) not null,
+	title varchar(200) not null,
 	body text not null,
 	is_premium boolean not null,
 	created_at datetime not null,

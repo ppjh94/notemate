@@ -42,7 +42,7 @@ public class ContentController {
 	 * @return
 	 */
 	@GetMapping("/contents/{contentId}")
-	public String contentDetail(@PathVariable Long contentId,
+	public String contentDetail(@PathVariable("contentId") Long contentId,
 								@AuthenticationPrincipal CustomUserDetails userDetails,
 								Model model) {
 		

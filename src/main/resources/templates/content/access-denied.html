@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>접근 제한 - Notemate</title>
+</head>
+<body>
+<h1>접근 제한</h1>
+
+<p th:text="${message}">
+    접근할 수 없습니다.
+</p>
+
+<a th:href="@{/login}">로그인하기</a>
+<a th:href="@{/contents}">콘텐츠 목록으로</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${content.title}">콘텐츠 상세</title>
+</head>
+<body>
+<a th:href="@{/contents}">목록으로</a>
+
+<h1 th:text="${content.title}">콘텐츠 제목</h1>
+
+<p>
+    작성자:
+    <span th:text="${content.authorName}">작성자</span>
+</p>
+
+<p>
+    유형:
+    <span th:if="${content.premium}">프리미엄</span>
+    <span th:if="${!content.premium}">무료</span>
+</p>
+
+<hr>
+
+<div th:text="${content.body}">
+    콘텐츠 본문
+</div>
+</body>
+</html>
