@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>콘텐츠 등록 - Notemate</title>
+</head>
+<body>
+    <h1>콘텐츠 등록</h1>
+
+    <form th:action="@{/admin/contents}" th:object="${contentCreateRequest}" method="post">
+        <div>
+            <label for="title">제목</label>
+            <input id="title" type="text" th:field="*{title}">
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox" th:field="*{premium}">
+                프리미엄 콘텐츠
+            </label>
+        </div>
+
+        <button type="submit">등록</button>
+    </form>
+    
+    <a th:href="@{/contents}">목록으로</a>
+</body>
+</html>
