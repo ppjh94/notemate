@@ -28,6 +28,7 @@ public class SecurityConfig {
                                 "/login",
                                 "/contents",
                                 "/contents/**",
+                                "/plans",
                                 "/api/users",
                                 "/css/**",
                                 "/js/**",

@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class SubscriptionPlanService {
 	
 	private final SubscriptionPlanRepository subscriptionPlanRepository;
