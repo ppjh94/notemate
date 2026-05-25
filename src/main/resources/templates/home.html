@@ -18,6 +18,22 @@
     </p>
 
     <a th:href="@{/contents}">콘텐츠 목록으로</a>
+
+    <p>
+        <a th:href="@{/contents}">콘텐츠 보기</a>
+    </p>
+
+    <p>
+        <a th:href="@{/plans}">구독 플랜 보기</a>
+    </p>
+
+    <p>
+        <a th:href="@{/admin/contents/new}">콘텐츠 등록</a>
+    </p>
+
+    <p>
+        <a th:href="@{/amdin/plans/new}">구독 플랜 등록</a>
+    </p>
     
     <form th:action="@{/logout}" method="post">
         <button type="submit">로그아웃</button>
