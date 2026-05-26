@@ -17,10 +17,8 @@
         <strong th:text="${role}">USER</strong>
     </p>
 
-    <a th:href="@{/contents}">콘텐츠 목록으로</a>
-
     <p>
-        <a th:href="@{/contents}">콘텐츠 보기</a>
+        <a th:href="@{/contents}">콘텐츠 목록으로</a>
     </p>
 
     <p>
@@ -32,7 +30,7 @@
     </p>
 
     <p>
-        <a th:href="@{/amdin/plans/new}">구독 플랜 등록</a>
+        <a th:href="@{/admin/plans/new}">구독 플랜 등록</a>
     </p>
     
     <form th:action="@{/logout}" method="post">

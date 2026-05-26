@@ -23,7 +23,7 @@ public class AdminSubscriptionPlanController {
 		return "admin/plan-form";
 	}
 	
-	@PostMapping("/admin/plan")
+	@PostMapping("/admin/plans")
 	public String createPlan(@Valid @ModelAttribute("planCreateRequest") SubscriptionPlanCreateRequest request, BindingResult bindingResult) {
 		
 		if (bindingResult.hasErrors()) {

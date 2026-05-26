@@ -12,7 +12,7 @@ public record ContentCreateRequest(
 		@NotBlank(message = "본문은 필수입니다.")
 		String body,
 		
-		boolean premium
+		Boolean premium
 ) {
 }
 
