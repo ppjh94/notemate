@@ -17,7 +17,7 @@
     <div>
         <label for="body">본문</label>
         <textarea id="body" th:field="*{body}" rows="10" cols="60"></textarea>
-        <p th:if="${#field.hasErrors('body')}" th:errors="*{body}"></p>
+        <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
     </div>
 
     <div>

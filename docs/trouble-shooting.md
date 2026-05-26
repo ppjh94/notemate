@@ -33,4 +33,15 @@ DBeaver에서 연결하고자 하는 DB 우클릭 > Edit Connection
 - ContentController 에서 @PathVariable 뒤에 ("contentId") 명시를 통해 Spring이 파라미터 이름을 추론하지 않도록 수정
 - 컴파일 옵션에 덜 의존해서 안정성 향상
 
+-----------------------------------------------------------------------
+
+## 문제4
+- 등록 페이지 접근 시, 컨트롤러 메서드에서 빈 객체(DTO)를 생성하여 View에 넘기는 과정에 boolean 값이 Null인 상태로 인한 에러 발생
+
+## 원인
+- Spring MVC의 데이터 바인딩(Data Binding) 메커니즘과 원시 타입(Primitive Type)의 특성으로 인해 발생
+
+## 해결
+- DTO에 원시 타입으로 선언 되어있는 boolean을 래퍼 클래스 형태인 Boolean으로 수정
+
 

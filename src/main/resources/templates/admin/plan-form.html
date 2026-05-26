@@ -10,25 +10,25 @@
 <form th:action="@{/admin/plans}" th:object="${planCreateRequest}" method="post">
     <div>
         <label for="name">플랜명</label>
-        <input id="name" type="text" th:field="**{name}">
+        <input id="name" type="text" th:field="*{name}">
         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     </div>
 
     <div>
         <label for="price">가격</label>
-        <input id="price" type="number" th:field="**{price}">
+        <input id="price" type="number" th:field="*{price}">
         <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
     </div>
     
     <div>
         <label for="durationDays">구독 기간</label>
-        <input id="durationDays" type="number" th:field="**{durationDays}">
+        <input id="durationDays" type="number" th:field="*{durationDays}">
         <p th:if="${#fields.hasErrors('durationDays')}" th:errors="*{durationDays}"></p>
     </div>
 
     <div>
         <label for="description">설명</label>
-        <input id="description" type="text" th:field="**{description}">
+        <input id="description" type="text" th:field="*{description}">
         <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
     </div>
 
@@ -39,7 +39,7 @@
         </label>
     </div>
 
-    <button type="submit"></button>
+    <button type="submit">등록</button>
     
 </form>
 
