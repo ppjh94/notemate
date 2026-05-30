@@ -31,7 +31,7 @@ public class SubscriptionService {
 		User user = findUser(userId);
 		SubscriptionPlan plan = findActivePlan(planId);
 		
-		vailddateNotAlreadySubscribed(user);
+		vaildateNotAlreadySubscribed(user);
 		
 		LocalDateTime now = LocalDateTime.now();
 		LocalDateTime endAt = now.plusDays(plan.getDurationDays());
@@ -70,7 +70,7 @@ public class SubscriptionService {
 		return plan;
 	}
 
-	private void vailddateNotAlreadySubscribed(User user) {
+	private void vaildateNotAlreadySubscribed(User user) {
 		boolean alreadySubscribed = subscriptionRepository.existsByUserAndStatus(user, SubscriptionStatus.ACTIVE);
 		if (alreadySubscribed) {
 			throw new IllegalStateException("이미 활성화된 구독이 있습니다.");
