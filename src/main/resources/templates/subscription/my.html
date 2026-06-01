@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>내 구독 - Notemate</title>
+</head>
+<body>
+<h1>내 구독 상태</h1>
+
+<a th:href="@{/}">홈으로</a>
+<a th:href="@{/plans}">구독 플랜 보기</a>
+
+<div th:if="${subscription == null}">
+    <p>현재 활성화된 구독이 없습니다.</p>
+</div>
+
+<div th:if="${subscription != null}">
+    <p>
+        플랜명:
+        <strong th:text="${subscription.planName}">플랜명</strong>
+    </p>
+
+    <p>
+        가격:
+        <span th:text="${subscription.price}">0</span>원
+    </p>
+
+    <p>
+        기간:
+        <span th:text="${subscription.durationDays}">30</span>일
+    </p>
+
+    <p>
+        상태:
+        <span th:text="${subscription.status}">ACTIVE</span>
+    </p>
+
+    <p>
+        시작일:
+        <span th:text="${subscription.startAt}">2026-01-01T00:00</span>
+    </p>
+
+    <p>
+        종료일:
+        <span th:text="${subscription.endAt}">2026-02-01T00:00</span>
+    </p>
+</div>
+</body>
+</html>

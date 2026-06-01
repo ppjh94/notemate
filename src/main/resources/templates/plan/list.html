@@ -27,7 +27,9 @@
         </p>
         <p th:text="${plan.description}">설명</p>
 
-        <button type="button" disabled>구독하기 준비중</button>
+        <from th:action="@{subscriptions/subscribe/{planId}(planId=${plan.id})}" method="post">
+            <button type="submit">구독하기</button>
+        </from>
     </li>
 </ul>
 </body>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>구독 오류 - Notemate</title>
+</head>
+<body>
+<h1>구독 처리 오류</h1>
+
+<p th:text="${message}">
+    구독 처리 중 오류가 발생했습니다.
+</p>
+
+<a th:href="@{/plans}">구독 플랜으로 돌아가기</a>
+<a th:href="@{/subscriptions/me}">내 구독 상태 보기</a>
+</body>
+</html>
