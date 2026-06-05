@@ -20,7 +20,7 @@ create table contents (
 		foreign key (user_id) references user(user_id)
 );
 
-create table subscriptionPlan (
+create table subscription_plan (
 	plan_id bigint auto_increment primary key,
 	plan_name varchar(50) not null,
 	price int not null,
