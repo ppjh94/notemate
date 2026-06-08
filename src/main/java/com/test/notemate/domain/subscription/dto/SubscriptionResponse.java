@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import com.test.notemate.domain.subscription.entity.Subscription;
 
 public record SubscriptionResponse(
-		Long id,
+		Long statusId,
 		String planName,
 		Integer price,
 		Integer durationDays,

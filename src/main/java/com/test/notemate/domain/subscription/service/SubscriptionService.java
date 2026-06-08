@@ -71,7 +71,9 @@ public class SubscriptionService {
 	}
 
 	private void vaildateNotAlreadySubscribed(User user) {
-		boolean alreadySubscribed = subscriptionRepository.existsByUserAndStatus(user, SubscriptionStatus.ACTIVE);
+		boolean alreadySubscribed = 
+				subscriptionRepository.existsByUserAndStatus(user, SubscriptionStatus.ACTIVE);
+		
 		if (alreadySubscribed) {
 			throw new IllegalStateException("이미 활성화된 구독이 있습니다.");
 		}

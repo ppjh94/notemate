@@ -44,4 +44,17 @@ DBeaver에서 연결하고자 하는 DB 우클릭 > Edit Connection
 ## 해결
 - DTO에 원시 타입으로 선언 되어있는 boolean을 래퍼 클래스 형태인 Boolean으로 수정
 
+-----------------------------------------------------------------------
+
+## 문제5
+- DB 테이블인 subscriptionPlan 매핑 실패로 인한 구독 플랜 확인 불가
+- 화면에서는 표시되지만 구독하기 기능 실행 시 (plan_id) FK 외래키 참조 실패 에러 발생
+
+## 원인
+- Spring Boot + Hibernate에서 snake_case 네이밍으로 DB를 자동 생성 후 해당 테이블에 매핑하여 subscription_plan 테이블에 데이터가 저장되고 있었음
+- subscriptionPlan 테이블과 연결되어있는 기존 코드로 인해 데이터가 없는 해당 테이블에서 planId 값을 찾아서 발생한 것으로 확인
+
+## 해결
+- DB 네이밍 규칙을 subscription_plan 으로 지정하고 그 외 테이블 삭제 및 매핑 코드 일부 수정 
+
 
