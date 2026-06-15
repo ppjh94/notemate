@@ -10,6 +10,7 @@ import com.test.notemate.domain.content.dto.ContentDetailResponse;
 import com.test.notemate.domain.content.dto.ContentListResponse;
 import com.test.notemate.domain.content.entity.Content;
 import com.test.notemate.domain.content.repository.ContentRepository;
+import com.test.notemate.domain.subscription.service.SubscriptionService;
 import com.test.notemate.domain.user.entity.User;
 import com.test.notemate.domain.user.repository.UserRepository;
 
@@ -22,6 +23,7 @@ public class ContentService {
 	
 	private final ContentRepository contentRepository;
 	private final UserRepository userRepository;
+	private final SubscriptionService subscriptionService;
 	
 	public List<ContentListResponse> getContents() {
 		return contentRepository.findAllByOrderByContentIdDesc()
@@ -34,9 +36,7 @@ public class ContentService {
 		Content content = contentRepository.findById(contentId)
 				.orElseThrow(() -> new IllegalArgumentException("콘텐츠를 찾을 수 없습니다."));
 				
-		if (content.isPremium() && !loggedIn) {
-			throw new IllegalStateException("프리미업 콘텐츠는 로그인 후 이용할 수 있습니다.");
-		}
+		validateContentAccess(content, userId);
 		
 		return ContentDetailResponse.from(content);
 	}
@@ -54,6 +54,22 @@ public class ContentService {
 			.build();
 		
 		return contentRepository.save(content).getContentId();
+	}
+	
+	private void validateContentAccess(Content content, Long userId) {
+		if (!content.isPremium()) {
+			return;
+		}
+		
+		if (userId == null) {
+			throw new IllegalStateException("프리미엄 콘텐츠는 로그인 후 구독해야 이용할 수 있습니다.");
+		}
+		
+		boolean hasActiveSubscription = subscriptionService.hasActiveSubscription(userId);
+		
+		if (!hasActiveSubscription) {
+			throw new IllegalStateException("프리미엄 콘텐츠는 구독 후 이용할 수 있습니다.");
+		}
 	}
 	
 }
