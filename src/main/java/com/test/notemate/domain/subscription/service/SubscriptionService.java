@@ -55,6 +55,12 @@ public class SubscriptionService {
 				.map(SubscriptionResponse::from);
 	}
 	
+	public boolean hasActiveSubscription(Long userId) {
+		User user = findUser(userId);
+		
+		return subscriptionRepository.existsByUserAndStatus(user, SubscriptionStatus.ACTIVE);
+	}
+	
 	private User findUser(Long userId) {
 		return userRepository.findById(userId)
 				.orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));

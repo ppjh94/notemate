@@ -32,7 +32,7 @@ public class ContentService {
 				.toList();
 	}
 	
-	public ContentDetailResponse getContent(Long contentId, boolean loggedIn) {
+	public ContentDetailResponse getContent(Long contentId, Long userId) {
 		Content content = contentRepository.findById(contentId)
 				.orElseThrow(() -> new IllegalArgumentException("콘텐츠를 찾을 수 없습니다."));
 				
@@ -47,11 +47,11 @@ public class ContentService {
 				.orElseThrow(() -> new IllegalArgumentException("작성자를 찾을 수 없습니다."));
 		
 		Content content = Content.builder()
-			.title(request.title())
-			.body(request.body())
-			.premium(request.premium())
-			.author(author)
-			.build();
+				.title(request.title())
+				.body(request.body())
+				.premium(request.premium())
+				.author(author)
+				.build();
 		
 		return contentRepository.save(content).getContentId();
 	}

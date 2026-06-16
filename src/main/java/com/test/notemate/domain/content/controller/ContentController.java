@@ -46,10 +46,10 @@ public class ContentController {
 								@AuthenticationPrincipal CustomUserDetails userDetails,
 								Model model) {
 		
-		boolean loggedIn = userDetails != null;
+		Long userId = userDetails != null ? userDetails.getId() : null;
 		
 		try {
-			ContentDetailResponse content = contentService.getContent(contentId, loggedIn);
+			ContentDetailResponse content = contentService.getContent(contentId, userId);
 			model.addAttribute("content", content);
 			return "content/detail";
 		} catch (IllegalStateException e) {
@@ -57,7 +57,6 @@ public class ContentController {
 			return "content/access-denied";
 		}
 	}
-
 }
 
 
