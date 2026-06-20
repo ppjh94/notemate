@@ -26,6 +26,12 @@ public class SubscriptionService {
 	private final SubscriptionPlanRepository subscriptionPlanRepository;
 	private final UserRepository userRepository;
 	
+	/**
+	 * 구독 활성화 메서드
+	 * @param userId
+	 * @param planId
+	 * @return
+	 */
 	@Transactional
 	public Long subscribe(Long userId, Long planId) {
 		User user = findUser(userId);
@@ -45,6 +51,21 @@ public class SubscriptionService {
 				.build();
 				
 		return subscriptionRepository.save(subscription).getStatusId();
+	}
+	
+	/**
+	 * 구독 취소 메서드
+	 * @param userId
+	 */
+	@Transactional
+	public void cancelMySubscription(Long userId) {
+		User user = findUser(userId);
+		
+		Subscription subscription = subscriptionRepository
+				.findTopByUserAndStatusOrderByStatusIdDesc(user, SubscriptionStatus.ACTIVE)
+				.orElseThrow(() -> new IllegalStateException("활성화된 구독이 없습니다."));
+		
+		subscription.cancel();
 	}
 	
 	public Optional<SubscriptionResponse> getMyActiveSubscription(Long userId) {
