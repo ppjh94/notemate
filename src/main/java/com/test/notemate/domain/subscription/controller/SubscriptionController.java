@@ -47,5 +47,22 @@ public class SubscriptionController {
 		
 		return "subscription/my";
 	}
+	
+	/**
+	 * 구독 취소 메서드
+	 */
+	@PostMapping("/subscriptions/cancel")
+	public String cancelSubscription(@AuthenticationPrincipal CustomUserDetails userDetails,
+									Model model) {
+		
+		try {
+			subscriptionService.cancelMySubscription(userDetails.getId());
+			return "redirect:/subscription/me";
+		} catch (IllegalStateException | IllegalArgumentException e) {
+			model.addAttribute("message", e.getMessage());
+			return "subscription/error";
+		}
+	
+	}
 
 }

@@ -44,6 +44,10 @@
         종료일:
         <span th:text="${subscription.endAt}">2026-02-01T00:00</span>
     </p>
+
+    <form th:action="@{/subscriptions/cancel}" method="post">
+        <button type="submit">구독 취소</button>
+    </form>
 </div>
 </body>
 </html>
