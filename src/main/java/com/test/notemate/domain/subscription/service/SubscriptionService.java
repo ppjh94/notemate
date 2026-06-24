@@ -1,6 +1,7 @@
 package com.test.notemate.domain.subscription.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -66,6 +67,22 @@ public class SubscriptionService {
 				.orElseThrow(() -> new IllegalStateException("활성화된 구독이 없습니다."));
 		
 		subscription.cancel();
+	}
+	
+	/**
+	 * 만료 처리 메서드
+	 * @return
+	 */
+	@Transactional
+	public int expireSubscriptions() {
+		LocalDateTime now = LocalDateTime.now();
+		
+		List<Subscription> expiredSubscriptions =
+				subscriptionRepository.findByStatusAndEndAtBefore(SubscriptionStatus.ACTIVE, now);
+		
+		expiredSubscriptions.forEach(Subscription::expire);
+		
+		return expiredSubscriptions.size();
 	}
 	
 	public Optional<SubscriptionResponse> getMyActiveSubscription(Long userId) {

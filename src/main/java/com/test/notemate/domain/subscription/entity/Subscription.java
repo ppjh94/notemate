@@ -70,7 +70,7 @@ public class Subscription extends BaseTimeEntity {
 		this.status = SubscriptionStatus.CANCELED;
 	}
 	
-	public void exprire() {
+	public void expire() {
 		this.status = SubscriptionStatus.EXPIRED;
 	}
 	

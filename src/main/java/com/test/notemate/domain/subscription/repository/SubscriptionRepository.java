@@ -1,5 +1,6 @@
 package com.test.notemate.domain.subscription.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,5 +20,8 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Long
 	
 	/* 사용자의 활성 구독 여부 확인 (중복 구독 방지 역할) */
 	boolean existsByUserAndStatus(User user, SubscriptionStatus status);
+	
+	/* 만료 대상 조회 메서드 추가 */
+	List<Subscription> findByStatusAndEndAtBefore(SubscriptionStatus status, LocalDateTime now);
 	
 }
