@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>구독 처리 결과 - Notemate</title>
+</head>
+<body>
+<h1>구독 처리 결과</h1>
+
+<p th:text="${message}">
+    처리 결과 메시지
+</p>
+
+<a th:href="@{/}">홈으로</a>
+<a th:href="@{/subscription/me}">내 구독 상태</a>
+<a th:href="@{/contents}">콘텐츠 목록</a>
+</body>
+</html>

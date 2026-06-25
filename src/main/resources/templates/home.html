@@ -36,6 +36,10 @@
         <a th:href="@{/admin/plans/new}">구독 플랜 등록</a>
     </p>
     
+    <form th:action="@{/admin/subscriptions/expire}" method="post">
+        <button type="submit">만료 구독 처리</button>
+    </form>
+    
     <form th:action="@{/logout}" method="post">
         <button type="submit">로그아웃</button>
     </form>
